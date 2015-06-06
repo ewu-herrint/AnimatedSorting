@@ -281,9 +281,7 @@ namespace AnimatedSorting
         {
             Random rand = new Random();
 
-            Point p1 = c1.PointToScreen(new Point(0, 0));
-            Point p2 = c2.PointToScreen(new Point(0, 0));
-            int dis = (int)(p2.X - p1.X);
+            int dis = (int)(c1.Margin.Left - c2.Margin.Left);
 
             TransformGroup transformGroup1 = new TransformGroup();
             TransformGroup transformGroup2 = new TransformGroup();
@@ -318,8 +316,8 @@ namespace AnimatedSorting
             c2.RenderTransform = transformGroup2;
 
             DoubleAnimation slideUp = new DoubleAnimation { By = -65, Duration = TimeSpan.FromSeconds(1.0) };
-            DoubleAnimation slideLeft = new DoubleAnimation { By = -dis, Duration = TimeSpan.FromSeconds(1.0) };
-            DoubleAnimation slideRight = new DoubleAnimation { By = dis, Duration = TimeSpan.FromSeconds(1.0) };
+            DoubleAnimation slideLeft = new DoubleAnimation { By = dis, Duration = TimeSpan.FromSeconds(1.0) };
+            DoubleAnimation slideRight = new DoubleAnimation { By = -dis, Duration = TimeSpan.FromSeconds(1.0) };
             DoubleAnimation slideDown = new DoubleAnimation { By = 65, Duration = TimeSpan.FromSeconds(1.0) };
 
             // UP
